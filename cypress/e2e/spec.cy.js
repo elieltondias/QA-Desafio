@@ -36,7 +36,7 @@ describe('seu_barriga', () =>{
   it('login e funcionalidades', () => {
 
     const userData = {
-      nome: `${Math.random().toString(36).substring(2, 7)}`,
+      nome_aleatorio: `${Math.random().toString(36).substring(2, 7)}`,
     };
 
       cy.visit('https://seubarriga.wcaquino.me/login')
@@ -60,8 +60,8 @@ describe('seu_barriga', () =>{
 
       cy.get('#data_transacao').type('01/01/2011');
       cy.get('#data_pagamento').type('01/01/2011');
-      cy.get('#descricao').type(userData.nome);
-      cy.get('#interessado').type(userData.nome);
+      cy.get('#descricao').type(userData.nome_aleatorio);
+      cy.get('#interessado').type(userData.nome_aleatorio);
       cy.get('#valor').type('99999');
       cy.get('#status_pago').click().type('{enter}')
 
