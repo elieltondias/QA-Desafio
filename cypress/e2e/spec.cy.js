@@ -2,6 +2,7 @@ describe('seu_barriga', () =>{
 
   let n = 1;
 
+  // Loop
   while (n < 20) {
     n++;
 
@@ -44,7 +45,6 @@ describe('seu_barriga', () =>{
 
       cy.get('#email').should('exist');
       cy.get('#senha').should('exist');
-
       cy.get('#email').type('teste_cadastro@gmail.com');
       cy.get('#senha').type('teste_cadastro{enter}');
 
@@ -79,6 +79,6 @@ describe('seu_barriga', () =>{
       cy.get(':nth-child(5) > a').click();
 
   })
-}
+} // Fim do Loop
 
 })
