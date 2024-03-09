@@ -1,3 +1,3 @@
-* Desafio Workshop QA
+# Desafio Workshop QA
 
-** Teste Automatizado Com Cypress
+## Teste Automatizado Com Cypress
