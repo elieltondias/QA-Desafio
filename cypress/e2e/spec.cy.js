@@ -1,5 +1,10 @@
 describe('seu_barriga', () =>{
 
+  let n = 1;
+
+  while (n < 20) {
+    n++;
+
   it('cadastro', () => {
     cy.visit('https://seubarriga.wcaquino.me/login')
     
@@ -11,15 +16,28 @@ describe('seu_barriga', () =>{
     cy.get('#email').should('exist');
     cy.get('#senha').should('exist');
 
-    cy.get('#nome').type('teste_cadastro');
-    cy.get('#email').type('teste_cadastro@gmail.com');
-    cy.get('#senha').type('teste_cadastro');
+    // Geração de e-mail e senha randomico
+    const userData = {
+      nome: `${Math.random().toString(36).substring(2, 7)}`,
+      email: `${Math.random().toString(36).substring(2, 7)}@gmail.com`,
+      senha: `${Math.random().toString(36).substring(2, 7)}`,
+    };
+
+    cy.get('#nome').type(userData.nome);
+    cy.get('#email').type(userData.email);
+    cy.get('#senha').type(userData.senha);
+
+
     cy.contains('Cadastrar').should('be.visible');
     cy.get('.btn').click();
 
 })
 
-  it('login', () => {
+  it('login e funcionalidades', () => {
+
+    const userData = {
+      nome: `${Math.random().toString(36).substring(2, 7)}`,
+    };
 
       cy.visit('https://seubarriga.wcaquino.me/login')
       cy.contains('Login').should('be.visible');
@@ -42,9 +60,9 @@ describe('seu_barriga', () =>{
 
       cy.get('#data_transacao').type('01/01/2011');
       cy.get('#data_pagamento').type('01/01/2011');
-      cy.get('#descricao').type('Fundos imobiliarios');
-      cy.get('#interessado').type('user');
-      cy.get('#valor').type('5000');
+      cy.get('#descricao').type(userData.nome);
+      cy.get('#interessado').type(userData.nome);
+      cy.get('#valor').type('99999');
       cy.get('#status_pago').click().type('{enter}')
 
       // Verificar Movimentação no extrato (RESUMO MENSAL)
@@ -61,5 +79,6 @@ describe('seu_barriga', () =>{
       cy.get(':nth-child(5) > a').click();
 
   })
+}
 
 })
